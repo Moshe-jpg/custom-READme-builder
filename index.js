@@ -1,6 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-const generateMarkdown = require('utils\\generateMarkdown.js');
+// const generateMarkdown = require('utils\\generateMarkdown.js');
 
 
 // TODO: Create an array of questions for user input
@@ -64,11 +64,10 @@ const promptQuestions = readmeData => {
                   return false;
                 }
             }
-
         },
         {
             type: 'checkbox',
-            name: 'licenses',
+            name: 'license',
             message: 'Which license would you like to include?',
             choices: [
                 new inquirer.Separator(' = The Choices = '),
@@ -101,7 +100,6 @@ const promptQuestions = readmeData => {
                   return false;
                 }
             }
-
         },
         {
             type: 'input',
@@ -116,11 +114,14 @@ const promptQuestions = readmeData => {
                 }
             }
         }
-    
     ])
+    .then(answers => {
+        readmeData.push(answers)
+        return answers;
+    })
     .then((answers) => {
-        console.log(JSON.stringify(answers, null, '  '));
-      });
+        console.log(JSON.stringify(answers, null, '  '))
+    });
 };
 
 promptQuestions();
