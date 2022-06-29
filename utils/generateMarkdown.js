@@ -79,7 +79,7 @@ function generateMarkdown(answers) {
 
 
   ## Questions
-  #### ${answers.questions}
+  #### You can reach me at [${answers.questions}](${answers.questions}) if you have additional questions
 
 
   ## Created By:

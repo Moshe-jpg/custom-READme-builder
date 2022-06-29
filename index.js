@@ -98,12 +98,12 @@ const promptQuestions = readmeData => {
         {
             type: 'input',
             name: 'questions',
-            message: 'What questions do you have about this project?',
+            message: 'What is your email?',
             validate: questionsInput => {
                 if (questionsInput) {
                   return true;
                 } else {
-                  console.log('You need to include at least 1 question!');
+                  console.log('You need to include your email!');
                   return false;
                 }
             }
