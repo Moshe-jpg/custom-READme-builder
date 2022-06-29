@@ -7,7 +7,10 @@
 
 #### To run this code, clone the github repo, download node inquirer, and run node index.js in the console. Once you answer all the questions it will create a README file in the dist folder which has everything you typed in the console.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 70aa48b65038b14f966a4755fe9838514ab5e5a2
 <img src="images\20220627_152808_HDR.jpg" alt="README generator screenshot">
 <img src="images\20220628_225815.jpg" alt="README generator screenshot">
 <img src="images\20220628_225852.jpg" alt="README generator screenshot">
