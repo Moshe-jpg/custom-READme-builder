@@ -6,7 +6,7 @@ const generateMarkdown = require('./utils/generateMarkdown.js');
 
 
 // TODO: Create an array of questions for user input
-const promptQuestions = readmeData => {
+const promptQuestions = () => {
     console.log('⬇⬇⬇ Add A New readME.md ⬇⬇⬇');
 
     return inquirer
