@@ -1,15 +1,13 @@
 // TODO: Include packages needed for this application
+const path = require('path');
+const fs = require('fs');
 const inquirer = require('inquirer');
-// const generateMarkdown = require('utils\\generateMarkdown.js');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 
 
 // TODO: Create an array of questions for user input
 const promptQuestions = readmeData => {
-    console.log('Add A New readME.md');
-
-    if (!readmeData){
-        readmeData = [];
-    }
+    console.log('⬇⬇⬇ Add A New readME.md ⬇⬇⬇');
 
     return inquirer
     .prompt([
@@ -66,27 +64,10 @@ const promptQuestions = readmeData => {
             }
         },
         {
-            type: 'checkbox',
+            type: 'list',
             name: 'license',
             message: 'Which license would you like to include?',
-            choices: [
-                new inquirer.Separator(' = The Choices = '),
-                {
-                    name: 'MIT'
-                },
-                {
-                    name: 'Yale'
-                },
-                {
-                    name: 'Harvard'
-                }
-            ],
-            validate(answer) {
-                if (answer.length < 1) {
-                  return 'You must choose at least one License.';
-                }
-                return true;
-            }
+            choices: ["MIT", "Apache 2.0", "GPL 3.0", "BSD 3", "none"]
         },
         {
             type: 'input',
@@ -113,25 +94,47 @@ const promptQuestions = readmeData => {
                   return false;
                 }
             }
+        },
+        {
+            type: 'input',
+            name: 'questions',
+            message: 'What questions do you have about this project?',
+            validate: questionsInput => {
+                if (questionsInput) {
+                  return true;
+                } else {
+                  console.log('You need to include at least 1 question!');
+                  return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'githubUsername',
+            message: 'What is your GitHub username',
+            validate: githubUsernameInput => {
+                if (githubUsernameInput) {
+                  return true;
+                } else {
+                  console.log('You need to type your Github username!');
+                  return false;
+                }
+            }
         }
     ])
     .then(answers => {
-        readmeData.push(answers)
-        return answers;
+        console.log(answers);
+        const readMePath = path.join(__dirname, '/dist', 'README.md');
+        fs.writeFileSync(readMePath, generateMarkdown(answers), (err) => {
+            if (err){
+                console.log(err);
+            }
+        });
     })
-    .then((answers) => {
-        console.log(JSON.stringify(answers, null, '  '))
+    .catch(err => {
+        console.log(err);
     });
 };
 
-promptQuestions();
-
-
-// // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {}
-
-// // TODO: Create a function to initialize app
-// function init() {}
-
 // // Function call to initialize app
-// init();
+promptQuestions();
