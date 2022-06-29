@@ -2,10 +2,6 @@
 
 ## Creates a README file based on what you input in the console
 
-
-### Created By:
-[Moshe Gadol](github.com/moshe-jpg)
-
 ## How to run it
 [Intro video](https://www.awesomescreenshot.com/video/9700663?key=1f387182107354bf6b0e78fbf0b3cfb3)
 
